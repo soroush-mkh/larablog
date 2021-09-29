@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminUsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,9 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/admin',function (){
+    return view('admin.index');
+});
+
+Route::resource('admin/users',AdminUsersController::class);
