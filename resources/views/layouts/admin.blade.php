@@ -16,14 +16,24 @@
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     <!-- Bootstrap Core CSS -->
-    <link href="{{asset('css/libs/blog-post.css')}}" rel="stylesheet">
-    <link href="{{asset('css/libs/styles.css')}}" rel="stylesheet">
+    {{--<link href="{{asset('/css/app.css')}}" rel="stylesheet">--}}
+    {{--<link href="{{asset('css/libs/blog-post.css')}}" rel="stylesheet">--}}
+    {{--<link href="{{asset('css/libs/styles.css')}}" rel="stylesheet">--}}
     <link href="{{asset('css/libs/sb-admin-2.css')}}" rel="stylesheet">
-    <link href="{{asset('css/libs/metisMenu.css')}}" rel="stylesheet">
-    <link href="{{asset('css/libs/app.css')}}" rel="stylesheet">
+    {{--<link href="{{asset('css/libs/metisMenu.css')}}" rel="stylesheet">--}}
     <link href="{{asset('css/libs/bootstrap.css')}}" rel="stylesheet">
-    <link href="{{asset('css/libs/font-awesome.css')}}" rel="stylesheet">
-    <link href="{{asset('css/libs.css')}}" rel="stylesheet">
+    {{--<link href="{{asset('css/libs/font-awesome.css')}}" rel="stylesheet">--}}
+    {{--<link href="{{asset('css/libs.css')}}" rel="stylesheet">--}}
+
+    <style>
+        th{
+            text-align: right;
+        }
+        .navbar-brand{
+            float: right;
+            padding: unset;
+        }
+    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,19 +45,19 @@
 
 </head>
 
-<body id="admin-page" style="direction: rtl">
+<body id="admin-page">
 
 <div id="wrapper">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+{{--            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>
+            </button>--}}
 
 
             <!-- /.dropdown -->
@@ -82,25 +92,25 @@
         </ul>
 
 
-{{--        <ul class="nav navbar-nav navbar-right">
-        @if(auth()->guest())
-        @if(!Request::is('auth/login'))
-        <li><a href="{{ url('/auth/login') }}">Login</a></li>
-        @endif
-        @if(!Request::is('auth/register'))
-        <li><a href="{{ url('/auth/register') }}">Register</a></li>
-        @endif
-        @else
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-        <li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+        {{--        <ul class="nav navbar-nav navbar-right">
+                @if(auth()->guest())
+                @if(!Request::is('auth/login'))
+                <li><a href="{{ url('/auth/login') }}">Login</a></li>
+                @endif
+                @if(!Request::is('auth/register'))
+                <li><a href="{{ url('/auth/register') }}">Register</a></li>
+                @endif
+                @else
+                <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                <li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 
-        <li><a href="{{ url('/admin/profile') }}/{{auth()->user()->id}}">Profile</a></li>
-        </ul>
-        </li>
-        @endif
-        </ul>--}}
+                <li><a href="{{ url('/admin/profile') }}/{{auth()->user()->id}}">Profile</a></li>
+                </ul>
+                </li>
+                @endif
+                </ul>--}}
 
 
         <div class="navbar-default sidebar" role="navigation">
@@ -132,11 +142,11 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/users">تمام کاربران</a>
+                                <a href="{{route('admin.users.index')}}">لیست کاربران</a>
                             </li>
 
                             <li>
-                                <a href="/users/create">ساخت کاربر جدید</a>
+                                <a href="{{route('admin.users.create')}}">ساخت کاربر جدید</a>
                             </li>
 
                         </ul>
@@ -344,7 +354,7 @@
     </nav>
 
 
-    <div class="navbar-default sidebar" role="navigation">
+    {{--<div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li>
@@ -372,7 +382,7 @@
 
         </div>
 
-    </div>
+    </div>--}}
 
 </div>
 
@@ -382,10 +392,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">صفحه اصلی</h1>
 
                 @yield('content')
-
 
             </div>
             <!-- /.col-lg-12 -->
@@ -407,7 +415,6 @@
 <script src="{{asset('js/libs/metisMenu.js')}}"></script>
 <script src="{{asset('js/libs/sb-admin-2.js')}}"></script>
 <script src="{{asset('js/libs/scripts.js')}}"></script>
-
 
 
 @yield('footer')
