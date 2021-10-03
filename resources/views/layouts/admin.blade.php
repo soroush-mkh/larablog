@@ -56,6 +56,8 @@
     <![endif]-->
 
 
+    @yield('header')
+
 </head>
 
 <body id="admin-page">
@@ -224,11 +226,11 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/categories">تمام رسانه ها</a>
+                                <a href="{{route('admin.media.index')}}">تمام رسانه ها</a>
                             </li>
 
                             <li>
-                                <a href="/categories/create">آپلود رسانه جدید</a>
+                                <a href="{{route('admin.media.upload')}}">آپلود رسانه جدید</a>
                             </li>
 
                         </ul>
@@ -430,7 +432,6 @@
 <script src="{{asset('js/libs/metisMenu.js')}}"></script>
 <script src="{{asset('js/libs/sb-admin-2.js')}}"></script>
 <script src="{{asset('js/libs/scripts.js')}}"></script>
-
 
 @yield('footer')
 

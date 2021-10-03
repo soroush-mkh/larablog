@@ -128,6 +128,7 @@ class AdminPostsController extends Controller
     {
         $post = Post::findOrFail($id);
         unlink(public_path() . '/images/' . $post->photo->file);
+        $post->photo()->delete();
         $post->delete();
         Session::flash('deleted_post' , 'پست مورد نظر حذف شد.');
         return redirect()->route('admin.posts.index');
