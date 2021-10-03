@@ -47,7 +47,7 @@
                         <option value="">یک مورد را انتخاب کنید:</option>
                         @if($roles)
                             @foreach($roles as $role)
-                                <option value="{{$role->id}}" @if(old('status') == "{{$role->id}}") selected
+                                <option value="{{$role->id}}" @if(old('role_id') == "{{$role->id}}") selected
                                     @endif>{{$role->name}}</option>
                             @endforeach
                         @endif
@@ -78,7 +78,7 @@
             <section class="col-12 my-2">
                 <div class="form-group">
                     <label for="profile_photo">تصویر</label>
-                    <input type="file" class="form-control form-control-sm" name="profile_photo" id="profile_photo">
+                    <input type="file" name="profile_photo" id="profile_photo">
                 </div>
             </section>
 

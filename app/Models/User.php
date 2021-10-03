@@ -29,7 +29,7 @@ class User extends Authenticatable
         'role_id' ,
         'is_active' ,
         'password' ,
-        'profile_photo_path'
+        'profile_photo_path' ,
     ];
 
     /**
@@ -65,5 +65,19 @@ class User extends Authenticatable
     public function role ()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function isAdmin ()
+    {
+        if ( $this->role_id == 1 && $this->is_active == 1 )
+        {
+            return TRUE;
+        }
+        return FALSE;
+    }
+
+    public function posts ()
+    {
+        return $this->hasMany(Post::class);
     }
 }

@@ -26,12 +26,23 @@
     {{--<link href="{{asset('css/libs.css')}}" rel="stylesheet">--}}
 
     <style>
-        th{
+        th {
             text-align: right;
         }
-        .navbar-brand{
+
+        .navbar-brand {
             float: right;
             padding: unset;
+        }
+
+        .row, .container-fluid, #page-wrapper, section {
+            float: unset;
+        }
+        .btn{
+            margin: unset;
+        }
+        .unset{
+            all: unset;
         }
     </style>
 
@@ -52,18 +63,20 @@
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;">
         <div class="navbar-header">
-{{--            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>--}}
+        {{--            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>--}}
 
 
-            <!-- /.dropdown -->
+        <!-- /.dropdown -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fas fa-user"></i> <i class="fas fa-angle-down"></i>
+                    <i class="fas fa-user"></i>
+                    {{auth()->user()->name}}
+                    <i class="fas fa-angle-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user" style="z-index: 1000;">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i> پروفایل کاربر </a>
@@ -164,11 +177,11 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/posts">تمام پست ها</a>
+                                <a href="{{route('admin.posts.index')}}">تمام پست ها</a>
                             </li>
 
                             <li>
-                                <a href="/posts/create">ساخت پست جدید</a>
+                                <a href="{{route('admin.posts.create')}}">ساخت پست جدید</a>
                             </li>
 
                         </ul>

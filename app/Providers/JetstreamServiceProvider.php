@@ -13,7 +13,7 @@ class JetstreamServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register ()
     {
         //
     }
@@ -23,7 +23,7 @@ class JetstreamServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot ()
     {
         $this->configurePermissions();
 
@@ -35,15 +35,15 @@ class JetstreamServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function configurePermissions()
+    protected function configurePermissions ()
     {
-        Jetstream::defaultApiTokenPermissions(['read']);
+        Jetstream::defaultApiTokenPermissions([ 'read' ]);
 
         Jetstream::permissions([
-            'create',
-            'read',
-            'update',
-            'delete',
+            'create' ,
+            'read' ,
+            'update' ,
+            'delete' ,
         ]);
     }
 }

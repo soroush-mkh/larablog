@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminUsersController extends Controller
 {
@@ -41,7 +43,17 @@ class AdminUsersController extends Controller
      */
     public function store ( UserRequest $request )
     {
-        $input = $request->all();
+        if ( trim($request->password) == '' )
+        {
+            $input = $request->except('password');
+        }
+        else
+        {
+            $input               = $request->all();
+            $input[ 'password' ] = bcrypt($request->password);
+        }
+
+
         if ( $file = $request->file('profile_photo') )
         {
             $name = time() . $file->getClientOriginalName();
@@ -49,9 +61,10 @@ class AdminUsersController extends Controller
             $input[ 'profile_photo_path' ] = 'profile-photos/' . $name;
         }
 
-        $input[ 'password' ] = bcrypt($request->password);
-
         User::create($input);
+
+        Session::flash('saved_user' , 'حساب کاربری با موفقیت ساخته شد.');
+
         return redirect()->route('admin.users.index');
 
 
@@ -66,7 +79,8 @@ class AdminUsersController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show ( $id )
+    public
+    function show ( $id )
     {
         return view('admin.users.show');
     }
@@ -77,9 +91,13 @@ class AdminUsersController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit ( $id )
+    public
+    function edit ( $id )
     {
-        return view('admin.users.edit');
+        $user  = User::findOrFail($id);
+        $roles = Role::all();
+
+        return view('admin.users.edit' , compact('roles' , 'user'));
     }
 
     /**
@@ -89,9 +107,35 @@ class AdminUsersController extends Controller
      * @param int                      $id
      * @return \Illuminate\Http\Response
      */
-    public function update ( Request $request , $id )
+    public
+    function update ( UserEditRequest $request , $id )
     {
-        //
+
+        if ( trim($request->password) == '' )
+        {
+            $input = $request->except('password');
+        }
+        else
+        {
+            $input               = $request->all();
+            $input[ 'password' ] = bcrypt($request->password);
+        }
+
+        $user = User::findOrFail($id);
+
+
+        if ( $file = $request->file('profile_photo') )
+        {
+            $name = time() . $file->getClientOriginalName();
+            $file->move('profile-photos' , $name);
+            $input[ 'profile_photo_path' ] = 'profile-photos/' . $name;
+        }
+
+        $user->update($input);
+
+        Session::flash('updated_user' , 'اطلاعات کاربر تغییر یافت.');
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -100,8 +144,17 @@ class AdminUsersController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy ( $id )
+    public
+    function destroy ( $id )
     {
-        //
+        $user = User::findOrFail($id);
+
+        unlink(public_path() . '/' . $user->profile_photo_path);
+
+        $user->delete();
+
+        Session::flash('deleted_user' , 'کاربر مورد نظر حذف شد.');
+
+        return redirect()->route('admin.users.index');
     }
 }

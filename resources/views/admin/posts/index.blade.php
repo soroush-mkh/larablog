@@ -1,1 +1,71 @@
-<?php
+@extends('layouts.admin')
+
+@section('content')
+
+    @if(Session::has('deleted_post'))
+        <div class="unset rounded">
+            <p class="bg-danger m-5 m-md-5 m-sm-5 m-lg-5 rounded" style="float: unset; padding: 10px; box-sizing:
+            border-box;
+             margin: 10px">
+                {{session('deleted_post')}}
+            </p>
+        </div>
+    @elseif(Session::has('updated_post'))
+        <div class="unset rounded">
+            <p class="bg-info m-5 m-md-5 m-sm-5 m-lg-5 rounded" style="float: unset; padding: 10px; box-sizing: border-box;
+             margin: 10px">
+                {{session('updated_post')}}
+            </p>
+        </div>
+    @elseif(Session::has('saved_post'))
+        <div class="unset rounded">
+            <p class="bg-success m-5 m-md-5 m-sm-5 m-lg-5 rounded" style="float: unset; padding: 10px; box-sizing: border-box;
+             margin: 10px">
+                {{session('saved_post')}}
+            </p>
+        </div>
+    @endif
+
+    <h1 class="page-header">پست ها</h1>
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>شماره پست</th>
+            <th>عنوان پست</th>
+            <th>متن پست</th>
+            <th>نویسنده پست</th>
+            <th>دسته بندی</th>
+            <th>تصویر پست</th>
+            <th>زمان انتشار</th>
+            <th>زمان آخرین تغییر</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if($posts)
+            @foreach($posts as $post)
+                <tr>
+                    <td style="vertical-align: middle;">{{$post->id}}</td>
+                    <td style="vertical-align: middle;">
+                        <a href="{{route('admin.posts.edit',$post->id)}}">{{$post->title}}</a>
+                    </td>
+                    <td style="vertical-align: middle;">{{Str::limit($post->body,20)}}</td>
+                    <td style="vertical-align: middle;">
+                        {{$post->user->name}}
+                    </td>
+                    <td style="vertical-align: middle;">{{$post->category ? $post->category->name : 'نا مشخص'}}</td>
+                    <td style="vertical-align: middle;">
+                        <img class="rounded" style="width: 50px;height: 50px" width="50px" height="50px"
+                             src="{{$post->photo_id ? asset('images/'.$post->photo->file) :asset('images/no-photo.png')}}"
+                             alt=""></td>
+                    <td style="vertical-align: middle;">{{$post->created_at->diffForHumans()}}</td>
+                    <td style="vertical-align: middle;">{{$post->updated_at->diffForHumans()}}</td>
+                    </td>
+                </tr>
+            @endforeach
+        @endif
+        </tbody>
+    </table>
+
+@endsection
