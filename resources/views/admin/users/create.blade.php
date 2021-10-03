@@ -21,6 +21,7 @@
                 <div class="form-group">
                     <label for="name">نام و نام خانوادگی</label>
                     <input type="text"
+                           placeholder="لطفا نام و نام خانوادگی کاربر را وارد نمایید..."
                            class="form-control form-control-sm"
                            name="name"
                            id="name"
@@ -32,6 +33,7 @@
                 <div class="form-group">
                     <label for="email">پست الکترونیکی</label>
                     <input type="email"
+                           placeholder="لطفا پست الکترونیکی کاربر را وارد نمایید..."
                            class="form-control form-control-sm"
                            name="email"
                            id="email"
@@ -69,6 +71,7 @@
                 <div class="form-group">
                     <label for="password">کلمه عبور</label>
                     <input type="password"
+                           placeholder="لطفا کلمه عبور مورد نظر را وارد نمایید..."
                            class="form-control form-control-sm"
                            name="password"
                            id="password">

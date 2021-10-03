@@ -21,6 +21,7 @@
                 <div class="form-group">
                     <label for="title">عنوان پست</label>
                     <input type="text"
+                           placeholder="لطفا عنوان پست را وارد نمایید..."
                            class="form-control form-control-sm"
                            name="title"
                            id="title"
@@ -56,6 +57,7 @@
                 <div class="form-group">
                     <label for="body">متن پست</label>
                     <textarea type="text"
+                              placeholder="لطفا متن اصلی پست را وارد نمایید..."
                               class="form-control form-control-sm"
                               name="body"
                               id="body"

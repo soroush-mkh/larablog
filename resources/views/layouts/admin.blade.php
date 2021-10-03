@@ -38,10 +38,12 @@
         .row, .container-fluid, #page-wrapper, section {
             float: unset;
         }
-        .btn{
+
+        .btn {
             margin: unset;
         }
-        .unset{
+
+        .unset {
             all: unset;
         }
     </style>
@@ -149,13 +151,13 @@
                            href="#0">
                             <span>
                             <i class="fas fa-users"></i>
-بخش کاربران
+                            بخش کاربران
                                 </span>
                             <i class="fas fa-caret-left"></i>
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{route('admin.users.index')}}">لیست کاربران</a>
+                                <a href="{{route('admin.users.index')}}">نمایش کاربران</a>
                             </li>
 
                             <li>
@@ -177,7 +179,7 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{route('admin.posts.index')}}">تمام پست ها</a>
+                                <a href="{{route('admin.posts.index')}}">نمایش پست ها</a>
                             </li>
 
                             <li>
@@ -200,12 +202,12 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/categories">تمام دسته بندی ها</a>
+                                <a href="{{route('admin.categories.index')}}">نمایش دسته بندی ها</a>
                             </li>
 
-                            <li>
-                                <a href="/categories/create">ساخت دسته بندی جدید</a>
-                            </li>
+                            {{--                            <li>
+                                                            <a href="{{route('admin.categories.create')}}">ساخت دسته بندی جدید</a>
+                                                        </li>--}}
 
                         </ul>
                         <!-- /.nav-second-level -->
@@ -216,7 +218,7 @@
                            href="#0">
                             <span>
                             <i class="fas fa-photo-video"></i>
-بخش رسانه
+                                بخش رسانه
                                 </span>
                             <i class="fas fa-caret-left"></i>
                         </a>
@@ -341,7 +343,7 @@
                            href="#0">
                             <span>
                                 <i class="fas fa-file-alt"></i>
-صفحات نمونه
+                                صفحات نمونه
                                 </span>
                             <i class="fas fa-caret-left"></i>
                         </a>

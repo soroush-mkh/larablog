@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminPostsController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Middleware\AdminMiddleware;
@@ -45,6 +46,7 @@ Route::middleware([ AdminMiddleware::class ])->group(function ()
 
     Route::resource('admin/users' , AdminUsersController::class)->names('admin.users');
     Route::resource('admin/posts' , AdminPostsController::class)->names('admin.posts');
+    Route::resource('admin/categories' , AdminCategoryController::class)->names('admin.categories');
 });
 
 
