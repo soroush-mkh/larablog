@@ -4,19 +4,11 @@ use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminMediaController;
 use App\Http\Controllers\AdminPostsController;
 use App\Http\Controllers\AdminUsersController;
+use App\Http\Controllers\CommentRepliesController;
+use App\Http\Controllers\PostCommentController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/' , function ()
 {
@@ -38,6 +30,17 @@ Route::get('/' , function ()
     return view('admin.index');
 });*/
 
+
+/*_____ OPEN FOR ALL USERS _____*/
+Route::get('/post/{id}' , [ AdminPostsController::class , 'post' ])->name('home.post');
+
+/*_____ OPEN JUST FOR LOGED IN USERS _____*/
+Route::middleware([ Authenticate::class ])->group(function ()
+{
+    Route::post('comment/reply' , [ CommentRepliesController::class , 'createReply' ])->name('comment.replies.createReply');
+});
+
+/*_____ OPEN JUST FOR ADMIN USERS _____*/
 Route::middleware([ AdminMiddleware::class ])->group(function ()
 {
     Route::get('/admin' , function ()
@@ -56,7 +59,7 @@ Route::middleware([ AdminMiddleware::class ])->group(function ()
     Route::get('admin/media/upload' , [ AdminMediaController::class , 'upload' ])->name('admin.media.upload');
     Route::post('admin/media/store' , [ AdminMediaController::class , 'store' ])->name('admin.media.store');
     Route::delete('admin/media/{id}/destroy' , [ AdminMediaController::class , 'destroy' ])->name('admin.media.destroy');
+
+    Route::resource('admin/comments' , PostCommentController::class)->names('admin.comments');
+    Route::resource('admin/comment/replies' , CommentRepliesController::class)->names('comment.replies');
 });
-
-
-

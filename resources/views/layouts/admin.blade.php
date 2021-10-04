@@ -188,6 +188,10 @@
                                 <a href="{{route('admin.posts.create')}}">ساخت پست جدید</a>
                             </li>
 
+                            <li>
+                                <a href="{{route('admin.comments.index')}}">نمایش نظرات</a>
+                            </li>
+
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>

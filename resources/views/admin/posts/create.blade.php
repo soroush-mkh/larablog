@@ -61,8 +61,7 @@
                               class="form-control form-control-sm"
                               name="body"
                               id="body"
-                              rows="5"
-                              value="{{old('body')}}"></textarea>
+                              rows="5">{{old('body')}}</textarea>
                 </div>
             </section>
 

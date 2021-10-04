@@ -28,29 +28,32 @@
 
     <h1 class="page-header">پست ها</h1>
 
+    @if(count($posts) > 0)
 
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>شماره پست</th>
-            <th>عنوان پست</th>
-            <th>متن پست</th>
-            <th>نویسنده پست</th>
-            <th>دسته بندی</th>
-            <th>تصویر پست</th>
-            <th>زمان انتشار</th>
-            <th>زمان آخرین تغییر</th>
-        </tr>
-        </thead>
-        <tbody>
-        @if($posts)
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>عنوان پست</th>
+                <th>متن پست</th>
+                <th>نویسنده پست</th>
+                <th>دسته بندی</th>
+                <th>تصویر پست</th>
+                <th>زمان انتشار</th>
+                <th>زمان آخرین تغییر</th>
+                <th>نظرات</th>
+                <th>لینک پست</th>
+            </tr>
+            </thead>
+            <tbody>
+
             @foreach($posts as $post)
                 <tr>
                     <td style="vertical-align: middle;">{{$post->id}}</td>
                     <td style="vertical-align: middle;">
-                        <a href="{{route('admin.posts.edit',$post->id)}}">{{$post->title}}</a>
+                        <a href="{{route('admin.posts.edit',$post->id)}}">{{Str::limit($post->title,25)}}</a>
                     </td>
-                    <td style="vertical-align: middle;">{{Str::limit($post->body,20)}}</td>
+                    <td style="vertical-align: middle;">{{Str::limit($post->body,15)}}</td>
                     <td style="vertical-align: middle;">
                         {{$post->user->name}}
                     </td>
@@ -61,11 +64,23 @@
                              alt=""></td>
                     <td style="vertical-align: middle;">{{$post->created_at->diffForHumans()}}</td>
                     <td style="vertical-align: middle;">{{$post->updated_at->diffForHumans()}}</td>
+                    <td style="vertical-align: middle;">
+                        <a href="{{route('admin.comments.show',$post->id)}}">
+                            نمایش نظرات
+                        </a>
+                    </td>
+                    <td style="vertical-align: middle;">
+                        <a href="{{route('home.post',$post->id)}}">
+                            نمایش پست
+                        </a>
                     </td>
                 </tr>
             @endforeach
-        @endif
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+
+    @else
+        <h2 class="text-center">هیچ پستی ثبت نشده است.</h2>
+    @endif
 
 @endsection
