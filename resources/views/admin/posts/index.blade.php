@@ -70,7 +70,7 @@
                         </a>
                     </td>
                     <td style="vertical-align: middle;">
-                        <a href="{{route('home.post',$post->id)}}">
+                        <a href="{{route('home.post',$post->slug)}}">
                             نمایش پست
                         </a>
                     </td>

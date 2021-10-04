@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PostsCreateRequest;
 use App\Models\Category;
-use App\Models\Comment;
 use App\Models\Photo;
 use App\Models\Post;
-use App\Models\User;
-use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -136,10 +133,10 @@ class AdminPostsController extends Controller
         return redirect()->route('admin.posts.index');
     }
 
-    public function post ( $id )
+    public function post ( $slug )
     {
 
-        $post     = Post::findOrFail($id);
+        $post     = Post::findBySlugOrFail($slug);
         $comments = $post->comments->where('is_active' , 1);
         return view('post' , compact('post' , 'comments'));
 

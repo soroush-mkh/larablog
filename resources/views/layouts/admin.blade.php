@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>پرشین بلاگ: مدیریت سایت</title>
+    @yield('title')
 
     <link rel="shortcut icon" href="{{ asset('images/persian_blog_icon.png') }}">
 

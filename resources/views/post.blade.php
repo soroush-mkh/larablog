@@ -19,7 +19,9 @@
     <hr>
 
     <!-- Preview Image -->
-    <img class="img-responsive" src="{{asset('images/'.$post->photo->file)}}" alt="">
+    <img class="img-responsive rounded" style="height: 40rem;horiz-align: center;" src="{{asset('images/'
+    .$post->photo->file)}}"
+         alt="">
 
     <hr>
 
