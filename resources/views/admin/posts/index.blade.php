@@ -83,4 +83,8 @@
         <h2 class="text-center">هیچ پستی ثبت نشده است.</h2>
     @endif
 
+    <section style="margin-left: 15px;margin-right: 45%;">
+        {{$posts->links()}}
+    </section>
+
 @endsection

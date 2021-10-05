@@ -27,7 +27,7 @@
 
     <!-- Post Content -->
     <p class="lead"
-       style="font-size: 1.9rem; text-align: justify;text-justify: inter-word;line-height:3rem">{{$post->body}}</p>
+       style="font-size: 1.9rem; text-align: justify;text-justify: inter-word;line-height:3rem">{!! $post->body !!}</p>
 
     <hr>
 

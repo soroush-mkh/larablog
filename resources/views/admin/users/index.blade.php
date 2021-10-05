@@ -29,21 +29,21 @@
     <h1 class="page-header">کاربران</h1>
 
 
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>شماره کاربری</th>
-            <th>نام و نام خانوادگی</th>
-            <th>پست الکترونیکی</th>
-            <th>نوع کاربر</th>
-            <th>فعالیت</th>
-            <th>زمان ثبت</th>
-            <th>زمان آخرین تغییر</th>
-            <th>تصویر کاربر</th>
-        </tr>
-        </thead>
-        <tbody>
-        @if($users)
+    @if($users)
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>شماره کاربری</th>
+                <th>نام و نام خانوادگی</th>
+                <th>پست الکترونیکی</th>
+                <th>نوع کاربر</th>
+                <th>فعالیت</th>
+                <th>زمان ثبت</th>
+                <th>زمان آخرین تغییر</th>
+                <th>تصویر کاربر</th>
+            </tr>
+            </thead>
+            <tbody>
             @foreach($users as $user)
                 <tr>
                     <td style="vertical-align: middle;">{{$user->id}}</td>
@@ -65,8 +65,14 @@
                     </td>
                 </tr>
             @endforeach
-        @endif
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    @else
+        <h2 class="text-center">هیچ کاربری ثبت نشده است.</h2>
+    @endif
+
+    <section style="margin-left: 15px;margin-right: 45%;">
+        {{$users->links()}}
+    </section>
 
 @endsection

@@ -63,3 +63,8 @@ Route::middleware([ AdminMiddleware::class ])->group(function ()
     Route::resource('admin/comments' , PostCommentController::class)->names('admin.comments');
     Route::resource('admin/comment/replies' , CommentRepliesController::class)->names('comment.replies');
 });
+
+Route::group([ 'prefix' => 'laravel-filemanager' , 'middleware' => [ 'web' , 'AdminMiddleware' , 'auth' ] ] , function ()
+{
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});

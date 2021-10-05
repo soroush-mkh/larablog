@@ -63,5 +63,7 @@
             @endforeach
             </tbody>
         </table>
+    @else
+        <h2 class="text-center">هیچ رسانه ها ثبت نشده است.</h2>
     @endif
 @endsection
