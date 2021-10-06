@@ -34,15 +34,14 @@
             <thead>
             <tr>
                 <th>#</th>
+                <th>تصویر</th>
                 <th>عنوان پست</th>
-                <th>متن پست</th>
                 <th>نویسنده پست</th>
                 <th>دسته بندی</th>
-                <th>تصویر پست</th>
+                <th>لینک پست</th>
+                <th>نظرات</th>
                 <th>زمان انتشار</th>
                 <th>زمان آخرین تغییر</th>
-                <th>نظرات</th>
-                <th>لینک پست</th>
             </tr>
             </thead>
             <tbody>
@@ -51,29 +50,28 @@
                 <tr>
                     <td style="vertical-align: middle;">{{$post->id}}</td>
                     <td style="vertical-align: middle;">
+                        <img class="rounded" style="width: 50px;height: 50px" width="50px" height="50px"
+                             src="{{$post->photo_id ? asset('images/'.$post->photo->file) :asset('images/no-photo.png')}}"
+                             alt=""></td>
+                    <td style="vertical-align: middle;">
                         <a href="{{route('admin.posts.edit',$post->id)}}">{{Str::limit($post->title,25)}}</a>
                     </td>
-                    <td style="vertical-align: middle;">{{Str::limit($post->body,15)}}</td>
                     <td style="vertical-align: middle;">
                         {{$post->user->name}}
                     </td>
                     <td style="vertical-align: middle;">{{$post->category ? $post->category->name : 'نا مشخص'}}</td>
                     <td style="vertical-align: middle;">
-                        <img class="rounded" style="width: 50px;height: 50px" width="50px" height="50px"
-                             src="{{$post->photo_id ? asset('images/'.$post->photo->file) :asset('images/no-photo.png')}}"
-                             alt=""></td>
-                    <td style="vertical-align: middle;">{{$post->created_at->diffForHumans()}}</td>
-                    <td style="vertical-align: middle;">{{$post->updated_at->diffForHumans()}}</td>
+                        <a href="{{route('home.post',$post->slug)}}">
+                            نمایش پست
+                        </a>
+                    </td>
                     <td style="vertical-align: middle;">
                         <a href="{{route('admin.comments.show',$post->id)}}">
                             نمایش نظرات
                         </a>
                     </td>
-                    <td style="vertical-align: middle;">
-                        <a href="{{route('home.post',$post->slug)}}">
-                            نمایش پست
-                        </a>
-                    </td>
+                    <td style="vertical-align: middle;">{{$post->created_at->diffForHumans()}}</td>
+                    <td style="vertical-align: middle;">{{$post->updated_at->diffForHumans()}}</td>
                 </tr>
             @endforeach
             </tbody>

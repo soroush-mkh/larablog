@@ -1,19 +1,18 @@
 <?php
 
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminMediaController;
 use App\Http\Controllers\AdminPostsController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\CommentRepliesController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/' , function ()
-{
-    return view('welcome');
-});
+Route::get('/' , [ HomeController::class , 'index' ]);
 
 /*Route::middleware([ 'auth:sanctum' , 'verified' ])->get('/dashboard' , function ()
 {
@@ -32,7 +31,7 @@ Route::get('/' , function ()
 
 
 /*_____ OPEN FOR ALL USERS _____*/
-Route::get('/post/{id}' , [ AdminPostsController::class , 'post' ])->name('home.post');
+Route::get('/post/{id}' , [ HomeController::class , 'post' ])->name('home.post');
 
 /*_____ OPEN JUST FOR LOGED IN USERS _____*/
 Route::middleware([ Authenticate::class ])->group(function ()
@@ -43,11 +42,7 @@ Route::middleware([ Authenticate::class ])->group(function ()
 /*_____ OPEN JUST FOR ADMIN USERS _____*/
 Route::middleware([ AdminMiddleware::class ])->group(function ()
 {
-    Route::get('/admin' , function ()
-    {
-        return view('admin.index');
-
-    })->name('admin.index');
+    Route::get('/admin' , [ AdminController::class , 'index' ])->name('admin.index');
 
     Route::resource('admin/users' , AdminUsersController::class)->names('admin.users');
 

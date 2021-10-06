@@ -134,12 +134,4 @@ class AdminPostsController extends Controller
         return redirect()->route('admin.posts.index');
     }
 
-    public function post ( $slug )
-    {
-
-        $post     = Post::findBySlugOrFail($slug);
-        $comments = $post->comments->where('is_active' , 1);
-        return view('post' , compact('post' , 'comments'));
-
-    }
 }
