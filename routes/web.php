@@ -24,12 +24,6 @@ Route::get('/' , [ HomeController::class , 'index' ]);
     return view('dashboard');
 });*/
 
-/*Route::get('/admin' , function ()
-{
-    return view('admin.index');
-});*/
-
-
 /*_____ OPEN FOR ALL USERS _____*/
 Route::get('/post/{id}' , [ HomeController::class , 'post' ])->name('home.post');
 
@@ -37,6 +31,7 @@ Route::get('/post/{id}' , [ HomeController::class , 'post' ])->name('home.post')
 Route::middleware([ Authenticate::class ])->group(function ()
 {
     Route::post('comment/reply' , [ CommentRepliesController::class , 'createReply' ])->name('comment.replies.createReply');
+
 });
 
 /*_____ OPEN JUST FOR ADMIN USERS _____*/

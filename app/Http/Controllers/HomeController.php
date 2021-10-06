@@ -6,12 +6,13 @@ use App\Models\Category;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function index ()
     {
-        $posts      = Post::paginate(5);
+        $posts      = Post::latest()->paginate(5);
         $categories = Category::all();
 
         return view('front.home' , compact('posts' , 'categories'));
@@ -26,5 +27,11 @@ class HomeController extends Controller
 
         return view('post' , compact('post' , 'comments' , 'categories'));
 
+    }
+
+    public function logout ()
+    {
+        Auth::logout();
+        return redirect()->back();
     }
 }

@@ -12,7 +12,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" style="margin: unset" href="#">پرشین بلاگ</a>
+            <a class="navbar-brand" style=" margin: unset;cursor: default" href="">پرشین بلاگ</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="all: unset">
@@ -27,22 +27,29 @@
                     </li>
                 @else
                     <li>
-                        <a href="/logout">خروج از حساب کاربری</a>
+                        <form method="post" action="{{route('logout')}}">
+                            @csrf
+                            <button type="submit" class="btn btn-danger" style="margin-top: 8px">خروج از حساب
+                                                                                               کاربری</button>
+                        </form>
                     </li>
                     <li>
-                        <a href="/admin">صفحه مدیریت</a>
+                        <a href="{{route('admin.index')}}">صفحه مدیریت</a>
+                    </li>
+                    <li>
+                        {{--                        <a href="{{route('user.logout')}}">خروج از حساب کاربری</a>--}}
                     </li>
                 @endif
 
-{{--                <li>
-                    <a href="#">درباره ما</a>
-                </li>
-                <li>
-                    <a href="#">خدمات</a>
-                </li>
-                <li>
-                    <a href="#">ارتباط با ما</a>
-                </li>--}}
+                {{--                <li>
+                                    <a href="#">درباره ما</a>
+                                </li>
+                                <li>
+                                    <a href="#">خدمات</a>
+                                </li>
+                                <li>
+                                    <a href="#">ارتباط با ما</a>
+                                </li>--}}
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -50,4 +57,6 @@
     <!-- /.container -->
 </nav>
 <div class="container" style="margin-top: 10rem;">
+
+    <a href="{{route('admin.index')}}">صفحه مدیریت</a>
 

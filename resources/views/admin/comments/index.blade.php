@@ -43,7 +43,7 @@
                     <td style="vertical-align: middle;">{{$comment->email}}</td>
                     <td style="vertical-align: middle;">{{$comment->body}}</td>
                     <td style="vertical-align: middle;">
-                        <a href="{{route('home.post',$comment->post->id)}}">
+                        <a href="{{route('home.post',$comment->post->slug)}}">
                             نمایش پست
                         </a>
                     </td>

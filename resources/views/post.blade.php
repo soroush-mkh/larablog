@@ -11,30 +11,34 @@
             <!-- Blog Post -->
 
             <!-- Title -->
-            <h1>{{$post->title}}</h1>
+            <h1 style="line-height: 5rem;font-size: 2.2rem;font-weight: bold">{{$post->title}}</h1>
 
             <!-- Author -->
-            <p class="lead">
+            <p class="lead" style="font-size: 2rem">
                 پست شده توسط <a href="#">{{$post->user->name}}</a>
             </p>
 
-            <hr>
+        {{--            <hr>--}}
 
-            <!-- Date/Time -->
-            <p><span class="far fa-clock"></span> پست شده در {{$post->created_at->diffForHumans()}} </p>
+        <!-- Date/Time -->
+            <p style="font-size: 1.3rem"><span class="far fa-clock"></span> {{$post->created_at->diffForHumans()}} </p>
 
             <hr>
 
             <!-- Preview Image -->
-            <img class="img-responsive rounded" style="height: 40rem;horiz-align: center;" src="{{asset('images/'
-    .$post->photo->file)}}"
+            <img class="img-responsive rounded" style="height: 40rem;display: block;
+                                                      margin-left: auto;
+                                                      margin-right: auto;
+                                                      max-width:100%;" src="{{asset('images/'.$post->photo->file)}}"
                  alt="">
 
-            <hr>
+        {{--            <hr>--}}
 
-            <!-- Post Content -->
+        <!-- Post Content -->
             <p class="lead"
-               style="font-size: 1.9rem; text-align: justify;text-justify: inter-word;line-height:3rem">{!! $post->body !!}</p>
+               style="margin-top:5rem;font-size: 1.9rem; text-align: justify;text-justify: inter-word;
+               line-height:3rem">{!!
+               $post->body !!}</p>
 
             <hr>
 
