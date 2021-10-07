@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'reset' => 'Your password has been reset!',
-    'sent' => 'We have emailed your password reset link!',
-    'throttled' => 'Please wait before retrying.',
-    'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that email address.",
+    'reset' => 'کلمه عبور شما ریست شد.',
+    'sent' => 'ایمیلی حاوی لینک تنظیم مجدد کلمه عبور شما به ایمیلتان ارسال شد.',
+    'throttled' => 'لطفا قبل از تلاش مجدد لحظاتی منتظر بمانید',
+    'token' => 'احراز هویت حساب شما برای تنظیم مجدد کلمه عبور انجام نشد!',
+    'user' => "حساب کاربری با این پست الکترونیکی پیدا نشد!",
 
 ];

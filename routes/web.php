@@ -12,17 +12,14 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/' , [ HomeController::class , 'index' ]);
 
 /*Route::middleware([ 'auth:sanctum' , 'verified' ])->get('/dashboard' , function ()
 {
     return view('dashboard');
 })->name('dashboard');*/
 
-/*Route::middleware([ 'auth:sanctum' , 'verified' ])->get('/dashboard' , function ()
-{
-    return view('dashboard');
-});*/
+
+Route::get('/' , [ HomeController::class , 'index' ])->name('home-page');
 
 /*_____ OPEN FOR ALL USERS _____*/
 Route::get('/post/{id}' , [ HomeController::class , 'post' ])->name('home.post');

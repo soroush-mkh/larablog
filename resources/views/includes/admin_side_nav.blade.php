@@ -104,6 +104,12 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
+            <li>
+                <a href="{{route('home-page')}}">
+                    <i class="fas fa-scroll"></i>
+                    مشاهده وبلاگ
+                </a>
+            </li>
 
 
         </ul>

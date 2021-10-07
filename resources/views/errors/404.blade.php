@@ -1,4 +1,4 @@
-@include('layouts.admin')
+@include('layouts.blog-home')
 
 @section('content')
     <h2>صفحه وجود ندارد</h2>

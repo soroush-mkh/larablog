@@ -49,7 +49,7 @@
                         <option value="">یک مورد را انتخاب کنید:</option>
                         @if($roles)
                             @foreach($roles as $role)
-                                <option value="{{$role->id}}" @if(old('role_id') == "{{$role->id}}") selected
+                                <option value="{{$role->id}}" @if(old('role_id') == $role->id) selected
                                     @endif>{{$role->name}}</option>
                             @endforeach
                         @endif
