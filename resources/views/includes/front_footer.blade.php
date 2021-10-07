@@ -1,9 +1,10 @@
 <!-- Footer -->
 <footer>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12" >
             <hr>
-            <p style="text-align: center">تمامی حقوق متعلق به پرشین بلاگ است.&copy; - {{\Carbon\Carbon::now()->year}}</p>
+            <p style="text-align: center;">تمامی حقوق متعلق به پرشین بلاگ است.&copy; - {{\Carbon\Carbon::now()
+            ->year}}</p>
         </div>
         <!-- /.col-lg-12 -->
     </div>

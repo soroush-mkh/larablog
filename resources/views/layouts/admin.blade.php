@@ -61,7 +61,7 @@
 
 </head>
 
-<body id="admin-page">
+<body id="admin-page" style="background: #F8F8F8">
 
 <div id="wrapper">
 

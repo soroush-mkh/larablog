@@ -27,6 +27,8 @@ Route::get('/post/{id}' , [ HomeController::class , 'post' ])->name('home.post')
 /*_____ OPEN JUST FOR LOGED IN USERS _____*/
 Route::middleware([ Authenticate::class ])->group(function ()
 {
+    Route::post('admin/comments/store' , [ PostCommentController::class , 'store' ])->name('admin.comments.store');
+
     Route::post('comment/reply' , [ CommentRepliesController::class , 'createReply' ])->name('comment.replies.createReply');
 
 });
@@ -47,7 +49,13 @@ Route::middleware([ AdminMiddleware::class ])->group(function ()
     Route::post('admin/media/store' , [ AdminMediaController::class , 'store' ])->name('admin.media.store');
     Route::delete('admin/media/{id}/destroy' , [ AdminMediaController::class , 'destroy' ])->name('admin.media.destroy');
 
-    Route::resource('admin/comments' , PostCommentController::class)->names('admin.comments');
+
+    Route::get('admin/comments' , [ PostCommentController::class , 'index' ])->name('admin.comments.index');
+    Route::get('admin/comments/show' , [ PostCommentController::class , 'show' ])->name('admin.comments.show');
+    Route::patch('admin/comments/update/{id}' , [ PostCommentController::class , 'update' ])->name('admin.comments.update');
+    Route::delete('admin/comments/destroy/{id}' , [ PostCommentController::class , 'destroy' ])->name('admin.comments.destroy');
+
+
     Route::resource('admin/comment/replies' , CommentRepliesController::class)->names('comment.replies');
 });
 

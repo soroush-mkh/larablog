@@ -102,7 +102,7 @@ class CommentRepliesController extends Controller
         ];
 
         CommentReply::create($data);
-        $request->session()->flash('saved_reply' , 'پاسخ شما ثبت و در انتظار تایید ادمین قرار گرفت.');
+        $request->session()->flash('saved_comment' , 'پاسخ شما ثبت و در انتظار تایید ادمین قرار گرفت.');
         return redirect()->back();
     }
 }

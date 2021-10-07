@@ -105,12 +105,13 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="{{route('home-page')}}">
+                <a href="{{route('home-page')}}" style="background: #F8F8F8;" onMouseOver="this.style
+                .background='#EEEEEE'"
+                   onMouseOut="this.style.background='#F8F8F8'">
                     <i class="fas fa-scroll"></i>
                     مشاهده وبلاگ
                 </a>
             </li>
-
 
         </ul>
 
