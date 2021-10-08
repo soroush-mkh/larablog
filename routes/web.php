@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/' , [ HomeController::class , 'index' ])->name('home-page');
+Route::post('/search' , [ HomeController::class , 'search' ])->name('home.search');
+Route::get('/search/{categoryName}' , [ HomeController::class , 'category' ])->name('home.category');
 
 /*_____ OPEN FOR ALL USERS _____*/
 Route::get('/post/{id}' , [ HomeController::class , 'post' ])->name('home.post');

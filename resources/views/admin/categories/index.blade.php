@@ -30,29 +30,33 @@
 
 
     <div class="col-sm-6">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>شماره دسته</th>
-                <th>عنوان دسته</th>
-                <th>زمان ساخت</th>
-            </tr>
-            </thead>
-            <tbody>
-            @if($categories)
-                @foreach($categories as $category)
-                    <tr>
-                        <td style="vertical-align: middle;">{{$category->id}}</td>
-                        <td style="vertical-align: middle;">
-                            <a href="{{route('admin.categories.edit',$category->id)}}">{{$category->name}}</a>
-                        </td>
-                        <td style="vertical-align: middle;">{{$category->created_at->diffForHumans()}}</td>
-                        </td>
-                    </tr>
-                @endforeach
-            @endif
-            </tbody>
-        </table>
+        @if(count($categories) > 0)
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>شماره دسته</th>
+                    <th>عنوان دسته</th>
+                    <th>زمان ساخت</th>
+                </tr>
+                </thead>
+                <tbody>
+                @if($categories)
+                    @foreach($categories as $category)
+                        <tr>
+                            <td style="vertical-align: middle;">{{$category->id}}</td>
+                            <td style="vertical-align: middle;">
+                                <a href="{{route('admin.categories.edit',$category->id)}}">{{$category->name}}</a>
+                            </td>
+                            <td style="vertical-align: middle;">{{$category->created_at->diffForHumans()}}</td>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
+                </tbody>
+            </table>
+        @else
+            <h2 class="text-center">هیچ دسته بندی ای ثبت نشده است.</h2>
+        @endif
     </div>
 
     <div class="col-sm-6" style="margin: unset; padding: unset">

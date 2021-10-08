@@ -66,11 +66,6 @@ class AdminUsersController extends Controller
         Session::flash('saved_user' , 'حساب کاربری با موفقیت ساخته شد.');
 
         return redirect()->route('admin.users.index');
-
-
-        /*$user = User::create($request->all());
-
-        return redirect()->back();*/
     }
 
     /**
@@ -133,7 +128,7 @@ class AdminUsersController extends Controller
 
         $user->update($input);
 
-        Session::flash('updated_user' , 'اطلاعات کاربر تغییر یافت.');
+        Session::flash('updated_user' , 'اطلاعات کاربر با موفقیت تغییر یافت.');
 
         return redirect()->route('admin.users.index');
     }

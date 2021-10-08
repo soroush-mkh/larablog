@@ -2,33 +2,19 @@
 
 @section('content')
 
-    @if(Session::has('deleted_user'))
+    @if(Session::has('deleted_media'))
         <div class="unset rounded">
             <p class="bg-danger m-5 m-md-5 m-sm-5 m-lg-5 rounded" style="float: unset; padding: 10px; box-sizing:
             border-box;
              margin: 10px">
-                {{session('deleted_user')}}
-            </p>
-        </div>
-    @elseif(Session::has('updated_user'))
-        <div class="unset rounded">
-            <p class="bg-info m-5 m-md-5 m-sm-5 m-lg-5 rounded" style="float: unset; padding: 10px; box-sizing: border-box;
-             margin: 10px">
-                {{session('updated_user')}}
-            </p>
-        </div>
-    @elseif(Session::has('saved_user'))
-        <div class="unset rounded">
-            <p class="bg-success m-5 m-md-5 m-sm-5 m-lg-5 rounded" style="float: unset; padding: 10px; box-sizing: border-box;
-             margin: 10px">
-                {{session('saved_user')}}
+                {{session('deleted_media')}}
             </p>
         </div>
     @endif
 
     <h1 class="page-header">رسانه ها</h1>
 
-    @if($photos)
+    @if(count($photos) > 0)
 
         <table class="table table-striped">
             <thead>
@@ -47,7 +33,8 @@
                     <td style="vertical-align: middle;"><img style="width: 50px;height: 50px" height="50px"
                                                              width="50px"
                                                              class="rounded"
-                                                             src="{{$photo->file ? asset('images/'.$photo->file)
+                                                             src="{{$photo->file ? asset('storage/photos/shares/'
+                                                             .$photo->file)
                                                              : asset
                                                              ('images/no-photo.png')}}">
                     </td>

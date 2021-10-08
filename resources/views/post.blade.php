@@ -31,7 +31,8 @@
             <img class="img-responsive rounded" style="height: 40rem;display: block;
                                                       margin-left: auto;
                                                       margin-right: auto;
-                                                      max-width:100%;" src="{{asset('images/'.$post->photo->file)}}"
+                                                      max-width:100%;" src="{{$post->photo ? asset('images/'
+                                                      .$post->photo->file) : "http://placehold.it/900x300"}}"
                  alt="">
 
         {{--            <hr>--}}
@@ -97,7 +98,7 @@
                         <a class="pull-right" href="#">
                             <img class="media-object"
                                  style="border-radius: 2rem"
-                                 src="{{asset($comment->photo)}}"
+                                 src="{{$comment->photo ? asset($comment->photo) :  asset('images/no-photo.png')}}"
                                  width="64px"
                                  height="64px"
                                  alt="">
@@ -118,7 +119,8 @@
                                             <a class="pull-right" href="#">
                                                 <img class="media-object"
                                                      style="border-radius: 2rem"
-                                                     src="{{asset($reply->photo)}}"
+                                                     src="{{$reply->photo? asset($reply->photo) :  asset
+                                                             ('images/no-photo.png')}}"
                                                      width="50px"
                                                      height="50px"
                                                      alt="">

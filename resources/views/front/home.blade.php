@@ -1,5 +1,13 @@
 @extends('layouts.blog-home')
 
+@section('styles')
+    <style>
+        hr{
+            border: .1px solid #C1C1C1;
+        }
+    </style>
+@endsection
+
 @section('content')
 
     <div class="row">
@@ -12,7 +20,7 @@
          #c0c0c0">
 
             <!-- First Blog Post -->
-            @if($posts)
+            @if(count($posts) > 0)
                 @foreach($posts as $post)
                     {{--                    <hr>--}}
                     <h2>
@@ -22,6 +30,11 @@
 
                     <p class="lead" style="font-size: 1.8rem;line-height: .2rem;">
                         پست شده توسط {{$post->user->name}}
+                    </p>
+
+                    <p class="lead" style="font-size: 1.4rem;line-height: .2rem;">
+                        <i class="fas fa-layer-group"></i>
+                        {{$post->category->name}}
                     </p>
 
                     <p style="font-size: 1.2rem;line-height: 0;">
@@ -44,8 +57,10 @@
 
                     <hr>
 
-            @endforeach
-        @endif
+                @endforeach
+            @else
+                <h3 class="text-center">کاربر عزیز، متاسفانه پستی یافت نشد. منتظر ما باشید...</h3>
+            @endif
 
         <!-- Pagination -->
             <div class="row">

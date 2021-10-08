@@ -29,7 +29,8 @@
     <h1 class="page-header">کاربران</h1>
 
 
-    @if($users)
+    @if(count($users) > 0)
+
         <table class="table table-striped">
             <thead>
             <tr>

@@ -1,19 +1,24 @@
 <div class="col-md-4">
 
+
     <!-- Blog Search Well -->
     <div class="well" style="background: #F5F5F5; border-radius: 1rem;box-shadow: 1px 1px 4px
          #c0c0c0">
-        <h4 style="font-weight: bold;">جستجو در وبلاگ</h4>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="جستجو کنید...">
-            <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="fas fa-search"></span>
-                        </button>
-                        </span>
-        </div>
-        <!-- /.input-group -->
+        <form action="{{route('home.search')}}" method="post">
+            @csrf
+            <h4 style="font-weight: bold;">جستجو در وبلاگ</h4>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="جستجو کنید..." name="searchWord">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <span class="fas fa-search"></span>
+                </button>
+                </span>
+            </div>
+            <!-- /.input-group -->
+        </form>
     </div>
+
 
     <!-- Blog Categories Well -->
     <div class="well" style="background: #F5F5F5; border-radius: 1rem;box-shadow: 1px 1px 4px
@@ -28,7 +33,8 @@
                 <ul class="list-unstyled">
                     @if($categories)
                         @foreach($categories as $category)
-                            <li style="line-height: 2.5rem"><a href="#">{{$category->name}}</a></li>
+                            <li style="line-height: 2.5rem"><a
+                                    href="{{route('home.category',$category->name)}}">{{$category->name}}</a></li>
                         @endforeach
                     @endif
                 </ul>
