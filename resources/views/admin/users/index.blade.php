@@ -34,7 +34,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>شماره کاربری</th>
+                <th>#</th>
                 <th>نام و نام خانوادگی</th>
                 <th>پست الکترونیکی</th>
                 <th>نوع کاربر</th>
@@ -47,7 +47,10 @@
             <tbody>
             @foreach($users as $user)
                 <tr>
-                    <td style="vertical-align: middle;">{{$user->id}}</td>
+{{--                    <td style="vertical-align: middle;">{{$user->id}}</td>--}}
+                    <td style="vertical-align: middle;">
+                        {{ (($users->currentPage() * 10) - 10) + $loop->iteration  }}
+                    </td>
                     <td style="vertical-align: middle;">
                         <a href="{{route('admin.users.edit',$user->id)}}">{{$user->name}}</a>
                     </td>

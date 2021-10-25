@@ -19,17 +19,20 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>شماره تصویر</th>
+                <th>#</th>
                 <th>تصویر</th>
+                <th>نام فایل</th>
                 <th>زمان آپلود</th>
-                <th>امکانات</th>
             </tr>
             </thead>
             <tbody>
 
             @foreach($photos as $photo)
                 <tr>
-                    <td style="vertical-align: middle;">{{$photo->id}}</td>
+                    {{--                    <td style="vertical-align: middle;">{{$photo->id}}</td>--}}
+                    <td style="vertical-align: middle;">
+                        {{ (($photos->currentPage() * 10) - 10) + $loop->iteration  }}
+                    </td>
                     <td style="vertical-align: middle;"><img style="width: 50px;height: 50px" height="50px"
                                                              width="50px"
                                                              class="rounded"
@@ -37,6 +40,9 @@
                                                              .$photo->file)
                                                              : asset
                                                              ('images/no-photo.png')}}">
+                    </td>
+                    <td style="vertical-align: middle;">
+                        {{$photo->file}}
                     </td>
                     <td style="vertical-align: middle;">{{$photo->updated_at->diffForHumans()}}</td>
                     <td>
@@ -53,4 +59,9 @@
     @else
         <h2 class="text-center">هیچ رسانه ها ثبت نشده است.</h2>
     @endif
+
+    <section style="margin-left: 15px;margin-right: 45%;">
+        {{$photos->links()}}
+    </section>
+
 @endsection

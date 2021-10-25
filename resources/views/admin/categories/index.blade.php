@@ -43,7 +43,10 @@
                 @if($categories)
                     @foreach($categories as $category)
                         <tr>
-                            <td style="vertical-align: middle;">{{$category->id}}</td>
+                            {{--                            <td style="vertical-align: middle;">{{$category->id}}</td>--}}
+                            <td style="vertical-align: middle;">
+                                {{  $loop->iteration  }}
+                            </td>
                             <td style="vertical-align: middle;">
                                 <a href="{{route('admin.categories.edit',$category->id)}}">{{$category->name}}</a>
                             </td>

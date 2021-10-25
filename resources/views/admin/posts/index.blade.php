@@ -48,7 +48,10 @@
 
             @foreach($posts as $post)
                 <tr>
-                    <td style="vertical-align: middle;">{{$post->id}}</td>
+{{--                    <td style="vertical-align: middle;">{{$post->id}}</td>--}}
+                    <td style="vertical-align: middle;">
+                        {{ (($posts->currentPage() * 10) - 10) + $loop->iteration  }}
+                    </td>
                     <td style="vertical-align: middle;">
                         <img class="rounded" style="width: 50px;height: 50px" width="50px" height="50px"
                              src="{{$post->photo_id ? asset('images/'.$post->photo->file) :asset('images/no-photo.png')}}"
